@@ -1,11 +1,36 @@
-<h1>Posts</h1>
-
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <h4>
-        <%= link_to post.title, post %>
-      </h4>
-    </li>
-  <% end %>
-</ul>
+<head>
+  <style type="text/css" media="screen">
+    .grid-container {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="ua">Ukrainian</a></li>
+        <li><a href="en">English</a></li>
+      </ul>
+    </nav>
+    <h1> <%= t :posts %> </h1>
+  </header>
+  <main>
+    <figure>
+    <div class="grid-container">
+      <% @posts.each do |post| %>
+        <div class="grid-item" style="width: 80%; margin: 0 auto;">
+          <div style="text-align: center;"> <%= link_to post.title, post %> </div>
+          <img src=<%= post.img %>/>
+        </div>
+      <% end %>
+    </div>
+    </figure>
+  </main>
+  <footer>
+    <p>© Boychuk, 2023. All rights reserved.</p>
+  </footer>
+</body>
+</html>
